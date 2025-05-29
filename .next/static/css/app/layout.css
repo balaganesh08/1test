@@ -1827,6 +1827,10 @@ body{
 
 @media (min-width: 640px){
 
+  .sm\:mb-4{
+    margin-bottom: 1rem;
+  }
+
   .sm\:max-w-\[425px\]{
     max-width: 425px;
   }
@@ -1861,6 +1865,10 @@ body{
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .sm\:p-4{
+    padding: 1rem;
+  }
+
   .sm\:text-left{
     text-align: left;
   }
@@ -1872,9 +1880,31 @@ body{
     margin-left: 4rem;
   }
 
+  .md\:w-72{
+    width: 18rem;
+  }
+
+  .md\:flex-row{
+    flex-direction: row;
+  }
+
   .md\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px){
+
+  .lg\:w-80{
+    width: 20rem;
+  }
+}
+
+@media (min-width: 1280px){
+
+  .xl\:w-96{
+    width: 24rem;
   }
 }
 

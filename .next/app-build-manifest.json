@@ -23,11 +23,6 @@
       "static/chunks/main-app.js",
       "static/css/app/deals/[dealId]/page.css",
       "static/chunks/app/deals/[dealId]/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
