@@ -147,18 +147,25 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 12px;
 }
 
 .styles_header__J2Pcv {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 4px;
 }
 
 .styles_customerName__RSPpR {
-  font-weight: 600;
   font-size: 20px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.styles_companyName__YcEoq {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 .styles_actions__xNlnU {
@@ -173,7 +180,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
   background: #fff;
   color: #64748b;
@@ -237,31 +244,48 @@
   padding: 0;
 }
 
-.styles_companyName__YcEoq {
-  color: var(--text-secondary, #64748b);
+.styles_projectDetails__5pa8F {
+  display: flex;
+  gap: 24px;
+  padding: 4px 0;
+}
+
+.styles_detailItem__PpFbl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.styles_detailLabel__5Q2s4 {
+  color: #64748b;
   font-size: 14px;
+}
+
+.styles_detailValue__PIIDu {
+  color: #1a202c;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .styles_contactInfo__MKirC {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: var(--text-secondary, #64748b);
+  gap: 16px;
+  color: #64748b;
   font-size: 14px;
-  margin-top: 4px;
   flex-wrap: wrap;
 }
 
 .styles_contactItem__YQwSU {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 
 .styles_link___Z_lb {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   color: #0284c7;
   text-decoration: none;
 }
@@ -269,23 +293,17 @@
 .styles_link___Z_lb:hover {
   text-decoration: underline;
 }
-
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/components/DealHeader/styles.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************/
-/* DealHeader styles */
 .styles_container__bhaxG {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-  flex: 1 0 0;
-  align-self: stretch;
-  border-bottom: 1px solid #e2e8f0;
   padding: 16px 32px;
   background: #fff;
   width: 100%;
-  max-width: 1064px;
 }
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/components/MilestoneProgressBar/styles.module.css ***!
