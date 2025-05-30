@@ -5,6 +5,7 @@ interface MilestoneProgressBarProps {
   currentStage?: string;
   progress?: number;
   lost?: boolean;
+  onStageClick?: (stage: string) => void;
 }
 
 const stages = [
@@ -54,12 +55,18 @@ const MilestoneProgressBar: React.FC<MilestoneProgressBarProps> = ({
   currentStage = "Conversion",
   progress = 15,
   lost = false,
+  onStageClick = () => {},
 }) => (
   <div className={styles.container}>
     {stages.map((stage, idx) => (
       <div
         key={stage}
-        className={styles.stageContainer}
+        className={`${styles.stageContainer} ${stage === currentStage ? styles.activeStage : ''}`}
+        onClick={() => onStageClick(stage)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onStageClick(stage)}
+        aria-label={`Go to ${stage} stage`}
       >
         <img
           src={getStageImage(stage, idx, currentStage, progress, lost)}

@@ -34,37 +34,42 @@ export default function DealOverviewPage() {
     <div className="flex min-h-screen bg-white">
       <Sidebar />
       <div className="flex-1 flex flex-col ml-14 md:ml-16 transition-all duration-200 bg-gray-50">
-        <Header 
-          breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Deals", href: "/deals" },
-            { label: dealId as string }
-          ]} 
-          className="border-b border-gray-200"
-        />
+        <div className="border-b border-gray-200">
+          <Header 
+            breadcrumbs={[
+              { label: "Home", href: "/" },
+              { label: "Deals", href: "/deals" },
+              { label: dealId as string }
+            ]} 
+          />
+        </div>
+        
+        {/* Header - Full width */}
+        <div className="w-full border-b border-gray-200 bg-white px-4 py-2">
+          <DealHeader />
+        </div>
+        
         {/* Main Content */}
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
           {/* Main Content Area */}
           <div className="flex-1 overflow-y-auto p-2 sm:p-4">
-            <div className="w-full">
-              <DealHeader className="mb-2 sm:mb-4" />
-              <div className="">
-                <DealMilestones 
-                  currentStage={currentStage}
-                  progress={15}
-                  useDetailedConversionSteps={true}
-                  onMarkStepAsDone={handleMarkStepAsDone}
-                  onContinueStep={handleContinueStep}
-                  onAddStepNote={handleAddStepNote}
-                  className="bg-white rounded-lg border border-gray-200 shadow-xs"
-                />
-              </div>
+            <div className="bg-white rounded-lg border border-gray-200 shadow-xs">
+              <DealMilestones 
+                currentStage={currentStage}
+                progress={15}
+                useDetailedConversionSteps={true}
+                onMarkStepAsDone={handleMarkStepAsDone}
+                onContinueStep={handleContinueStep}
+                onAddStepNote={handleAddStepNote}
+              />
             </div>
           </div>
           
-          {/* Sidebar */}
-          <div className="w-full md:w-72 lg:w-80 xl:w-96 flex-shrink-0 border-l border-gray-200 bg-white overflow-y-auto">
-            <DealSidebar className="p-2 sm:p-4" />
+          {/* Sidebar with reduced height */}
+          <div className="w-full md:w-72 lg:w-80 xl:w-80 flex-shrink-0 border-l border-gray-200 bg-white overflow-y-auto" style={{ maxHeight: '70vh' }}>
+            <div className="p-2 sm:p-4">
+              <DealSidebar />
+            </div>
           </div>
         </div>
       </div>

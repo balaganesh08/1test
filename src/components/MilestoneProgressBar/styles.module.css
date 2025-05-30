@@ -3,12 +3,33 @@
   display: flex;
   align-items: center;
   gap: 0;
+  padding: 8px 0;
 }
 
 .stageContainer {
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.stageContainer:hover {
+  transform: translateY(-2px);
+}
+
+.stageContainer:active {
+  transform: translateY(0);
+}
+
+.stageContainer:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.stageContainer.activeStage {
+  z-index: 2;
 }
 
 .stageImage {
@@ -32,6 +53,7 @@
   pointer-events: none;
   user-select: none;
   z-index: 1;
+  transition: all 0.2s ease;
 }
 
 .stageTextCompleted {

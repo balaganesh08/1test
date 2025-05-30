@@ -70,11 +70,19 @@ export default function DealMilestones({
   const isStageComplete = () =>
     stages[currentStage].steps.every((step: StageStep) => step.completed);
 
-  // 4. Handle stage transition
+  // 4. Handle stage change
+  const handleStageChange = (newStage: string) => {
+    setCurrentStage(newStage);
+    onStageChange(newStage);
+  };
+
+  // 5. Handle auto stage transition when all steps are completed
   const handleStageComplete = () => {
-    const idx = STAGE_ORDER.indexOf(currentStage);
-    if (idx < STAGE_ORDER.length - 1) {
-      setCurrentStage(STAGE_ORDER[idx + 1]);
+    const currentIdx = STAGE_ORDER.indexOf(currentStage);
+    if (currentIdx < STAGE_ORDER.length - 1) {
+      const nextStage = STAGE_ORDER[currentIdx + 1];
+      setCurrentStage(nextStage);
+      onStageChange(nextStage);
     }
   };
 
@@ -119,7 +127,11 @@ export default function DealMilestones({
       <div className={styles.header}>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>Milestones</div>
-          <MilestoneProgressBar currentStage={currentStage} progress={currentProgress} />
+          <MilestoneProgressBar 
+            currentStage={currentStage} 
+            progress={currentProgress} 
+            onStageClick={handleStageChange}
+          />
         </div>
         <span className={styles.progressText}>
           <span>{currentProgress}% progressed</span>
@@ -127,42 +139,17 @@ export default function DealMilestones({
         </span>
       </div>
       <div className={styles.stepsContainer}>
-        {Object.entries(stages).map(([stage, config]: [string, StageConfig]) => {
-          if (stage === currentStage) {
-            return (
-              <ConversionSteps
-                key={stage}
-                steps={steps}
-                activeStep={activeStepId}
-                onMarkAsDone={onMarkStepAsDoneInternal}
-                onContinue={onContinueStepInternal}
-                onAddNote={onAddStepNote}
-                isOngoing={true}
-                title={stage}
-                stage={stage}
-              />
-            );
-          }
-          return (
-            <MilestoneStepsList
-              key={stage}
-              title={config.title}
-              steps={config.steps}
-              totalSteps={config.totalSteps}
-              completedSteps={config.steps.filter((step: StageStep) => step.completed).length}
-              isActive={stage === currentStage}
-              variant={
-                stage === currentStage
-                  ? "current"
-                  : STAGE_ORDER.indexOf(stage) < STAGE_ORDER.indexOf(currentStage) || 
-                    (stage === "Closed" && config.steps.every(step => step.completed))
-                    ? "completed"
-                    : "upcoming"
-              }
-              onMarkStepAsDone={(stepId) => onMarkStepAsDoneInternal(`${stage.toLowerCase()}-step-${stepId}`)}
-            />
-          );
-        })}
+        <ConversionSteps
+          key={currentStage}
+          steps={steps}
+          activeStep={activeStepId}
+          onMarkAsDone={onMarkStepAsDoneInternal}
+          onContinue={onContinueStepInternal}
+          onAddNote={onAddStepNote}
+          isOngoing={true}
+          title={currentStage}
+          stage={currentStage}
+        />
       </div>
     </div>
   );
